@@ -23,4 +23,4 @@ do
     esac
 done
 
-for i in {1..$repeticiones}; do (./matrixMult --matrix "$matrix"); done
+for i in {1.."$repeticiones"}; do "./matrixMult --matrix "$matrix""; done
