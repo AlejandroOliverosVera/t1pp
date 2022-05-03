@@ -15,4 +15,12 @@
 #//
 #/////////////////////////////////////////////////////////////////////////////////
 
-for i in {1..$2}; do ./matrixMult -- matrix $1; done
+while getopts matrix:repeticiones: flag
+do
+    case "$flag" in
+        matrix) matrix=${OPTARG};;
+        repeticiones) repeticiones=${OPTARG};;
+    esac
+done
+
+for i in {1..$repeticiones}; do ./matrixMult --matrix $matrix; done
