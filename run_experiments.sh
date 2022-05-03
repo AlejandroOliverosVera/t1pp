@@ -17,7 +17,7 @@
 
 while getopts matrix:repeticiones: flag
 do
-    case "$flag" in
+    case "${flag}" in
         matrix) matrix=${OPTARG};;
         repeticiones) repeticiones=${OPTARG};;
     esac
