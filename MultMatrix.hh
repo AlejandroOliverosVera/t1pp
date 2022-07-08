@@ -19,9 +19,8 @@ public:
 	MultMatrix(){}
 	~MultMatrix(){}
 	
-	void DOijk(Matrix<float>& A, Matrix<float>& B, Matrix<float>& C);
-	void DOkij(Matrix<float>& A,Matrix<float>& B, Matrix<float>& C);
-
+	void DOijk(const Matrix<float>& A,const Matrix<float>& B, Matrix<float>& C);
+	void DOkij(const Matrix<float>& A,const Matrix<float>& B, Matrix<float>& C);
 };
 
 

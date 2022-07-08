@@ -11,16 +11,10 @@
 #//           ./run_experiments --matrix <ruta_al_archivo_de_datos> --repeticiones <nro>
 #//
 #//   Description:
-#//           -->Completar la descripción
+#//           Script en bash para ejecutar los experimentos una cantidad de veces determinada por el parametro entregado.
 #//
 #/////////////////////////////////////////////////////////////////////////////////
 
-while getopts matrix:repeticiones: flag
-do
-    case "${flag}" in
-        matrix) matrix=${OPTARG};;
-        repeticiones) repeticiones=${OPTARG};;
-    esac
+for ((i=1;i<=$4;i++)) do
+        ./mult --A $2 | tee -a resultados.txt;
 done
-
-for i in {1.."$repeticiones"}; do cmd.run "./matrixMult --matrix $matrix"; done

@@ -13,16 +13,19 @@
 
 /////////////////////////////////////////////////////////////////////////////////
 //   Usage:
-//           ./matrixMult --matrix matrix_file
+//           ./mult --A matrix_file
+
 //
 //   Description:
-//           -->Completar la descripción
+//           En esta sección del código se hacen los llamados a las funciones
+//			 y se miden los tiempos de ejecución necesarios además de mostrar
+//			 en consola los datos obtenidos.
 //
 /////////////////////////////////////////////////////////////////////////////////
 
 void uso(std::string pname)
 {
-	std::cerr << "Uso: " << pname << " --matrix MATRIX_FILE" << std::endl;
+	std::cerr << "Uso: " << pname << " --A MATRIX_FILE" << std::endl;
 }
 
 int main(int argc, char** argv)
@@ -40,7 +43,7 @@ int main(int argc, char** argv)
 	std::string mystr;
 	for (size_t i=0; i < argc; i++) {
 		mystr=argv[i];
-		if (mystr == "--matrix") {
+		if (mystr == "--A") {
 			fileMatrixA = argv[i+1];
 		}
 	}
@@ -75,19 +78,22 @@ int main(int argc, char** argv)
 	// Ejemplo de creación de matrix vacía
 	MultMatrix mm;
 	Matrix<float> C(m1.rows(), m1.cols());
-	
+
+	//Rellenar C con ceros
 	for (size_t i=0; i<C.rows(); i++){
 		for (size_t j=0; j<C.cols(); j++){
 			C.value(i,j,0);
 		}
 	}
-
+	
 	//Ejemplo de llamada al método del algoritmo ijk
 	timer1.start();
 	mm.DOijk(m1, m1, C);
 	timer1.stop();
 
 	float timeijk = timer1.elapsed() / 1000000;
+
+	//Rellenar C con ceros
 	for (size_t i=0; i<C.rows(); i++){
 		for (size_t j=0; j<C.cols(); j++){
 			C.value(i,j,0);
@@ -101,9 +107,9 @@ int main(int argc, char** argv)
 	float timekij = timer1.elapsed() / 1000000;
 
 	std::cout <<m1.rows()<< "x" << m1.cols() << ":" << timeijk << ":" << timekij << "\n";
-
+	
+	
 	return(EXIT_SUCCESS);
-
 }
 
 
